@@ -19,7 +19,7 @@ export const AuthProvider = ({ children }) => {
             setIsAuthenticated(true); 
 
             // Envía el token al backend para validarlo y obtener la sesión
-            const res = await fetch("http://localhost:8000/auth", {
+            const res = await fetch(process.env.REACT_APP_API_URL + "/auth", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
