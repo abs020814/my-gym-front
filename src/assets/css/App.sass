@@ -115,3 +115,46 @@ td
 .pequenoAviso
 
     border: 2px solid red
+
+
+.form-container 
+    width: 400px
+    margin: 0 auto
+    padding: 20px
+    border: 1px solid #ccc
+
+.form-label 
+    font-weight: bold
+    margin-bottom: 25px
+    padding: 10px 20px    
+
+.form-div
+    padding: 10px 20px
+    text-align: left
+    
+.form-input 
+    width: 90%   
+    padding: 10px
+    border: 1px solid #ccc
+    font-size: 16px
+
+.form-button 
+    background-color: #4CAF50
+    color: white
+    padding: 10px 20px
+    border: none
+    border-radius: 5px
+    cursor: pointer
+
+.form-label::after 
+    content: "*" // Muestra un asterisco 
+    color: red  // Color rojo para indicar obligatorio
+    margin-left: 5px  // Espacio a la izquierda del asterisco 
+    display: none   // Oculta el asterisco por defecto 
+
+.form-input:invalid + .form-label::after
+    display: inline   // Muestra el asterisco cuando el campo está vacío
+    content: "*" // Muestra un asterisco 
+    color: red  // Color rojo para indicar obligatorio
+    margin-left: 5px  // Espacio a la izquierda del asterisco 
+
