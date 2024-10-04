@@ -9,14 +9,18 @@ const ModifEntrForm = ({setMostrarModifEntr, entrenador}) => {
     const { email , guardarTipoUsuario} = useContext(AuthContext);
 
     const [nombreEntr, setNombreEntr] = useState('');
-    const [datosEntr, setDatosEntr] = useState('');
+    const [estudiosEntr, setEstudiosEntr] = useState('');
+    const [tarifasEntr, setTarifasEntr] = useState('');
+    const [ubicacionEntr, setUbicacionEntr] = useState('');
     const [especEntr, setEspecEntr] = useState('');
     
         
     useEffect(() => {
         if (entrenador) {
           setNombreEntr(entrenador.nombreEntr);
-          setDatosEntr(entrenador.datosEntr);
+          setEstudiosEntr(entrenador.estudiosEntr);
+          setTarifasEntr(entrenador.tarifasEntr);
+          setUbicacionEntr(entrenador.ubicacionEntr);
           setEspecEntr(entrenador.especEntr);
         }
       }, [entrenador]);
@@ -27,18 +31,21 @@ const ModifEntrForm = ({setMostrarModifEntr, entrenador}) => {
         // Creando el objeto con los datos que se van a enviar al servidor
         const formData = {
             nombreEntr: nombreEntr,
-            datosEntr: datosEntr,
+            estudiosEntr: estudiosEntr,
+            tarifasEntr: tarifasEntr,
+            ubicacionEntr: ubicacionEntr,
             fechaAltaEntr: new Date().toISOString(), // Fecha actual en formato ISO
             especEntr: especEntr,
             emailEntr: email,
             idEntr: entrenador.idEntr
         };
 
-        if (!nombreEntr || !datosEntr || !especEntr ) {
+/*         if (!nombreEntr || !datosEntr || !especEntr ) {
             alert('Por favor, completa todos los campos');
             return;
         }
-        
+       */  
+
         console.log('Form dataaaa: ',JSON.stringify(formData));
 
         //send request post
@@ -77,37 +84,60 @@ const ModifEntrForm = ({setMostrarModifEntr, entrenador}) => {
     return (
         <div className="form-container">            
             <form method="post" onSubmit={handleSubmit}>
-                <div>
+            <div className="form-div">
                     <p>(email) {email}</p>
-                    <label htmlFor="nombreEntr">Nombre del Entrenador:</label>
-                    <input
+                    <label htmlFor="nombreEntr" className="form-label">Nombre del Entrenador:</label>
+                    <input className="form-input"
                     type="text"
                     id="nombreEntr"
                     value={nombreEntr}
+                    required
                     onChange={(e) => setNombreEntr(e.target.value)}
                     />
                 </div>
-                <div>
-                    <label htmlFor="datosEntr">Datos del entrenador:</label>
-                    <input
+                <div className="form-div">
+                    <label htmlFor="estudiosEntr" className="form-label">Estudios/formación como entrenador:</label>
+                    <input className="form-input"
                     type="text"
-                    id="datosEntr"
-                    value={datosEntr}
-                    onChange={(e) => setDatosEntr(e.target.value)}
+                    id="estudiosEntr"
+                    value={estudiosEntr}
+                    required
+                    onChange={(e) => setEstudiosEntr(e.target.value)}
                     />
                 </div>
-                <div>
-                    <label htmlFor="especEntr">Especialidad:</label>
-                    <input
+                <div className="form-div">
+                    <label htmlFor="tarifasEntr" className="form-label">Tarifas: escribe un rango de precios</label>
+                    <input className="form-input"
+                    type="text"
+                    id="tarifasEntr"
+                    value={tarifasEntr}
+                    required
+                    onChange={(e) => setTarifasEntr(e.target.value)}
+                    />
+                </div>
+                <div className="form-div">
+                    <label htmlFor="ubicacionEntr" className="form-label">¿Desde dónde impartes tu formación?</label>
+                    <input className="form-input"
+                    type="text"
+                    id="ubicacionEntr"
+                    value={ubicacionEntr}
+                    required
+                    onChange={(e) => setUbicacionEntr(e.target.value)}
+                    />
+                </div> 
+                <div className="form-div">
+                    <label htmlFor="especEntr" className="form-label">Especialidad:</label>
+                    <input className="form-input"
                     type="text"
                     id="especEntr"
                     value={especEntr}
+                    required
                     onChange={(e) => setEspecEntr(e.target.value)}
                     />
                 </div>
-                <button type="submit">Modificar</button>
+                <button className="btn btn-info" type="submit">Modificar</button>
             </form>
-            <button onClick={handleVolver}>Volver sin cambios</button>
+            <button className="btn btn-neutro" onClick={handleVolver}>Volver sin cambios</button>
         </div>
     )
 

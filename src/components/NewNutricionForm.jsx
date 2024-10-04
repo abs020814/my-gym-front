@@ -57,6 +57,9 @@ const NewNutricionForm = ({setMostrarAltaRP,setNutricions}) => {
     }
     ////
 
+    const handleCancelar = async (e) => {
+        setMostrarAltaRP(false)
+    }
 
     return (
         <div className="form-container">      
@@ -73,6 +76,8 @@ const NewNutricionForm = ({setMostrarAltaRP,setNutricions}) => {
                 </div>
                 <button className="btn btn-new" type="submit">Añadir plan</button>
             </form>
+            <button className="btn btn-neutro" onClick={handleCancelar}>Cancelar</button>
+
         
         </div>
     )

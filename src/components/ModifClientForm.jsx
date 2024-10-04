@@ -114,45 +114,54 @@ const ModifClientForm = ({setMostrarModifClie , cliente}) => {
     return (
         <div className="form-container">            
             <form method="post" onSubmit={handleSubmit}>
-                <div>
-                    <p>(email) {email}</p>
-                    <label htmlFor="nombreClie">Nombre del Cliente:</label>
+            <p>(email) {email}</p>                    
+                <div className="form-div">
+                    <label  className="form-label" htmlFor="nombreClie">Nombre del Cliente:</label>
                     <input
+                    className="form-input"
                     type="text"
                     id="nombreClie"
                     value={nombreClie}
+                    required
                     onChange={(e) => setNombreClie(e.target.value)}
                     />
                 </div>
-                <div>
-                    <label htmlFor="objetivosClie">Objetivos del Cliente:</label>
+                <div className="form-div">
+                    <label  className="form-label" htmlFor="objetivosClie">Objetivos del Cliente:</label>
                     <input
+                    className="form-input"
                     type="text"
                     id="objetivosClie"
                     value={objetivosClie}
+                    required
                     onChange={(e) => setObjetivosClie(e.target.value)}
                     />
                 </div>
-                <div>
-                    <label htmlFor="fecObjetivoClie">Fecha objetivo del Cliente:</label>
+                <div className="form-div">
+                    <label  className="form-label" htmlFor="fecObjetivoClie">Fecha objetivo del Cliente:</label>
                     <input
+                    className="form-input"
                     type="text"
                     id="fecObjetivoClie"
                     value={fecObjetivoClie}
+                    required
                     onChange={(e) => setFecObjetivoClie(e.target.value)}
                     />
                 </div>
-                <div>
-                    <label htmlFor="fecObjetivoClie">Tu peso actual:</label>
+                <div className="form-div">
+                    <label  className="form-label"  htmlFor="fecObjetivoClie">Tu peso actual:</label>
                     <input
-                    type="text"
+                    className="form-input" 
+                    type="number"
                     id="pesoClie"   
                     value={pesoClie}
+                    required
                     onChange={(e) => setPesoClie(e.target.value)}
                     />
                 </div>
                 <div className="form-item">
-                    <label>Selecciona un Entrenador:
+                    <h3>Si lo deseas, cambia de Entrenador:                        
+                    </h3>
                     <ul>
                     {entrenadores.map((entrenador) => (
                         <li
@@ -163,11 +172,14 @@ const ModifClientForm = ({setMostrarModifClie , cliente}) => {
                         }}
                         onClick={() => setSelectedEntrenador(entrenador.idEntr)}
                         >
-                        {entrenador.nombreEntr}
+                        <table>
+                            <tr><td>{entrenador.nombreEntr}</td>
+                                <td>{entrenador.especEntr}</td>
+                            </tr>
+                        </table>
                         </li>
                     ))}
                     </ul>
-                    </label>
                     <p className="pequenoAviso">Si cambias de entrenador y tenías rutina o plan de nutrición asignado, lo/s mantendrás hasta que tu nuevo entrenador/a te asigne el plan y/o la rutina que él/ella gestione</p>
                 </div>
                 <button className="btn btn-info" type="submit">Modif client</button>

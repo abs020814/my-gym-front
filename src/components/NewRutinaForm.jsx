@@ -14,6 +14,7 @@ const NewRutinaForm = ({setMostrarAltaRP,setRutinas}) => {
     //const [nombreClie, setNombreClie] = useState('');
     const [descrRuti, setDescrRuti] = useState('');
     const { idEntr , guardarTipoUsuario } = useContext(AuthContext);
+    const [isChecked, setIsChecked] = useState(false);
 
     // const location = useLocation();
     // Obtén idEntr desde location.state
@@ -23,13 +24,16 @@ const NewRutinaForm = ({setMostrarAltaRP,setRutinas}) => {
         e.preventDefault()
 
         // convert to an object
-        
+        //const diaLbrazos: 
+
        
         // Creando el objeto con los datos que se van a enviar al servidor
         const formData = {
             descrRuti: descrRuti,
-            idEntrRuti: idEntr
+            idEntrRuti: idEntr,
+            diaLbrazosRuti: isChecked ? 'S' : 'N'
         };
+
 
         console.log('Form data: ',formData);
 
@@ -68,6 +72,9 @@ const NewRutinaForm = ({setMostrarAltaRP,setRutinas}) => {
     }
     ////
 
+    const handleCancelar = async (e) => {
+        setMostrarAltaRP(false)
+    }
 
     return (
         <div className="form-container">      
@@ -82,8 +89,18 @@ const NewRutinaForm = ({setMostrarAltaRP,setRutinas}) => {
                     onChange={(e) => setDescrRuti(e.target.value)}
                     />
                 </div>
+                <div>
+                <label htmlFor="descrRutina">Lunes: ¿entramiento de brazos? </label>
+                    <input
+                    type="checkbox"
+                    checked={isChecked}
+                    //value={diaLbrazosRuti}
+                    onChange={() => setIsChecked(!isChecked)}
+                    />
+                </div>
                 <button className="btn btn-new" type="submit">Añadir rutina</button>
             </form>
+            <button className="btn btn-neutro" onClick={handleCancelar}>Cancelar</button>
         
         </div>
     )

@@ -32,6 +32,9 @@ footer
     p   
         margin: 0
 
+p
+    margin-block-start: 2px
+
 .Login 
     vertical-align: middle // Centra el contenido verticalmente
     justify-content: space-between
@@ -63,9 +66,22 @@ footer
     &.btn-neutro
         background-color: #888
 
-td  
-    padding: 0px 10px
+table 
+    width: 80% // Ajusta el ancho de la tabla según tus necesidades
+    margin: 0 auto // Centra la tabla horizontalmente
+    border-collapse: collapse // Elimina los espacios entre las celdas
 
+    td 
+        padding: 10px
+        border: 1px solid #ddf
+        text-align: center // Alinea el texto de cada celda al centro por defecto
+
+        &:first-child 
+            text-align: right  // Alinea a la derecha la primera celda de cada fila
+
+        &:last-child 
+            text-align: left // Alinea a la izquierda la última celda de cada fila
+    
 #comment-author
     background-color: #eee
 
@@ -79,7 +95,7 @@ td
     background-color: #eeeeee
 
 .avisoSinAlgo
-
+    padding: 10px 10px
     color:  #ff0000
 
 .entrenadorClass
@@ -118,7 +134,7 @@ td
 
 
 .form-container 
-    width: 400px
+    width: 600px
     margin: 0 auto
     padding: 20px
     border: 1px solid #ccc
