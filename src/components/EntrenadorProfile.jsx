@@ -6,6 +6,7 @@ import EntrenadorCliente from './EntrenadorCliente';
 import NewRutinaForm from './NewRutinaForm';
 import NewNutricionForm from './NewNutricionForm';
 import ModifEntrForm from './ModifEntrForm';
+import DiasSemana from './DiasSemana';
 
 const EntrenadorProfile = ( {setMostrarAlta} ) => {
     const navigate = useNavigate();  // Hook para la navegación
@@ -263,13 +264,23 @@ catch (e) {
                <tbody>
                  <tr>
                    <td>
-                <h3>{rutina.descrRuti}</h3>
+                        <h3>{rutina.descrRuti}</h3>
+                   </td>
+                   <td>
+                        <> 
+                        <p className="subray">Brazos:</p>
+                        <DiasSemana iniciales={rutina.diasBrazosRuti} /></>
+                   </td>
+                   <td>
+                        <> 
+                        <p className="subray">Tronco:</p>
+                        <DiasSemana iniciales={rutina.diasTroncoRuti} /></>
                    </td>
                    <td>
                 <p>Fecha de Alta: {rutina.fechaAltaRuti}</p>
                    </td>
                    <td>
-                <button className="btn btn-danger" onClick={() => handleClickBorrarRuti(rutina.idRuti)}>Borrar esta rutina</button>
+                <button className="btn btn-danger peq" onClick={() => handleClickBorrarRuti(rutina.idRuti)}>Borrar esta rutina</button>
                    </td>
                  </tr>
                </tbody>
@@ -300,7 +311,7 @@ catch (e) {
                 <p>Fecha de Alta: {nutricion.fechaAltaNutr}</p>
                    </td>
                    <td>
-                <button className="btn btn-danger" onClick={() => handleClickBorrarNutr(nutricion.idNutr)}>Borrar este plan</button>
+                <button className="btn btn-danger peq" onClick={() => handleClickBorrarNutr(nutricion.idNutr)}>Borrar este plan</button>
                    </td>
                  </tr>
                </tbody>
